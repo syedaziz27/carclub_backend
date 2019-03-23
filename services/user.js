@@ -1,5 +1,5 @@
 const pgp = require('pg-promise')({});
-const db = pgp('postgress://localhost/carclub');
+const db = pgp(process.env.DATABASE_URL || 'postgress://localhost/carclub');
 const UserService = {};
 
 UserService.create = (username, email, bio, picture, zip) => {

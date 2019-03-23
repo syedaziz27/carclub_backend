@@ -1,8 +1,3 @@
-DROP DATABASE IF EXISTS carclub;
-CREATE DATABASE carclub;
-
-\c carclub;
-
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
