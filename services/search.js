@@ -2,13 +2,13 @@ const pgp = require('pg-promise')({});
 const db = pgp('postgress://localhost/carclub');
 const SearchService = {};
 
-SearchService.getCars = (makeId) => {
+SearchService.getCar = (make, model) => {
     const sql = `
-    SELECT name 
-    FROM model
-    WHERE makeid = $[makeId] 
+    SELECT * 
+    FROM cars
+    WHERE make = $[make] AND model = $[model]
     `
-    return db.any(sql, {makeId})
+    return db.any(sql, {make, model})
 }
 
 module.exports = {SearchService}

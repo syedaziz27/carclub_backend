@@ -12,6 +12,6 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.use('/user', UserRouter);
-app.use('/', SearchRouter);
+app.use('/car', SearchRouter);
 
-module.exports = {app,}
+module.exports = {app,}  

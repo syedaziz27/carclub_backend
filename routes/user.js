@@ -16,7 +16,7 @@ UserRouter.get('/:username', (req, res) => {
         })
 });
 
-UserRouter.post('/', (req, res, next) => {
+UserRouter.post('/', (req, res) => {
     const {username, email, bio, picture, zip} = req.body;
   
     UserService.create(username, email, bio, picture, zip)
@@ -30,7 +30,7 @@ UserRouter.post('/', (req, res, next) => {
       })
 });
 
-UserRouter.put('/', (req, res, next) => {
+UserRouter.put('/', (req, res) => {
   
     const {username, email, bio, picture, zip} = req.body;
   
@@ -45,7 +45,7 @@ UserRouter.put('/', (req, res, next) => {
       })
 });
 
-UserRouter.delete('/', (req, res, next) => {
+UserRouter.delete('/', (req, res) => {
     const {username} = req.body;
   
     UserService.delete(username)
