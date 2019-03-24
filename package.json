@@ -36,7 +36,8 @@
       "!**/coverage/**",
       "!index.js",
       "!**/services/**",
-      "!**/routes/**"
+      "!**/routes/**",
+      "!**/scripts/**"
     ]
   }
 }
