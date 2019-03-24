@@ -1,5 +1,4 @@
-const pgp = require('pg-promise')({});
-const db = pgp((process.env.DATABASE_URL || 'postgress://localhost/carclub'));
+const {db} = require('./dbConnect')
 const SearchService = {};
 
 SearchService.getCar = (make, model) => {
