@@ -42,4 +42,4 @@ UserService.delete = (username) => {
     return db.none(sql, {username});
 }
 
-module.exports = {UserService, db};
+module.exports = UserService;

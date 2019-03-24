@@ -1,6 +1,6 @@
 const express = require('express');
 const UserRouter = express.Router();
-const {UserService} = require('../services/user');
+const UserService = require('../services/user');
 
 UserRouter.get('/:username', (req, res) => {
     const {username} = req.params;

@@ -1,6 +1,6 @@
 const express = require('express');
 const SearchRouter = express.Router();
-const {SearchService} = require('../services/search');
+const SearchService = require('../services/search');
 
 SearchRouter.get('/', (req, res) => {
 

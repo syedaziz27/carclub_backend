@@ -6,4 +6,4 @@ deploy:
   api_key: $HEROKU_KEY
   app: carclub-backend
   on: master 
-  strategy: git
+  strategy: git 

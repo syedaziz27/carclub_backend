@@ -1,3 +1,8 @@
+DROP DATABASE IF EXISTS carclub1;
+CREATE DATABASE carclub1;
+
+\c carclub1;
+
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
@@ -16,7 +21,7 @@ CREATE TABLE make (
 
 CREATE TABLE model (
     id SERIAL PRIMARY KEY,
-    makeID VARCHAR NOT NULL,
+    makeName VARCHAR NOT NULL,
     name VARCHAR NOT NULL
 );
 

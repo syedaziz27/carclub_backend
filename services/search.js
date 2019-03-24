@@ -11,4 +11,4 @@ SearchService.getCar = (make, model) => {
     return db.any(sql, {make, model})
 }
 
-module.exports = {SearchService}
+module.exports = SearchService
