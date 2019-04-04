@@ -9,35 +9,21 @@ CREATE TABLE users (
     updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
     username VARCHAR UNIQUE NOT NULL,
     email VARCHAR UNIQUE NOT NULL,
-    bio VARCHAR UNIQUE NOT NULL,
-    picture VARCHAR NOT NULL,
-    zip INT NOT NULL
-);
-
-CREATE TABLE make (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR UNIQUE NOT NULL
-);
-
-CREATE TABLE model (
-    id SERIAL PRIMARY KEY,
-    makeName VARCHAR NOT NULL,
-    name VARCHAR NOT NULL
+    picture VARCHAR,
+    city VARCHAR NOT NULL,
+    state VARCHAR NOT NULL,
+    zip INT NOT NULL,
+    bio VARCHAR
 );
 
 CREATE TABLE cars (
     id SERIAL PRIMARY KEY,
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    userID INT REFERENCES users(id) NOT NULL,
-    makeID INT REFERENCES make(id) NOT NULL,
-    modelID INT REFERENCES model(id) NOT NULL,
-    year INT NOT NULL,
-    mileage INT NOT NULL,
-    color VARCHAR NOT NULL,
-    price VARCHAR NOT NULL,
-    images VARCHAR NOT NULL,
-    description VARCHAR NOT NULL
+    make VARCHAR NOT NULL,
+    model VARCHAR NOT NULL,
+    color VARCHAR,
+    ownerID INT REFERENCES users(id) NOT NULL
 );
 
 CREATE TABLE favorites (
@@ -53,5 +39,17 @@ CREATE TABLE transactions (
     updated_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
-INSERT INTO users (username, email, bio, picture, zip)
-VALUES ('syed', 'email', 'bio', 'url', 11218)
+CREATE TABLE comments (
+    id SERIAL PRIMARY KEY,
+    carID INT REFERENCES cars(id) NOT NULL,
+    posterID INT REFERENCES users(id) NOT NULL
+);
+
+CREATE TABLE replies (
+    id SERIAL PRIMARY KEY,
+    posterID INT REFERENCES users(id) NOT NULL,
+    commentID INT REFERENCES comments(id) NOT NULL
+    );
+
+INSERT INTO users (username, email, picture, city, state, zip)
+VALUES ('syed', 'email', 'url', 'brooklyn', 'NY', 11218) 

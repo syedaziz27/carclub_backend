@@ -15,6 +15,7 @@ describe('Tests for /users route', () => {
         request(app)
             .get('/user/foo')
             .then(response => {
+                console.log(UserService.read.mock.calls)
                 expect(UserService.read.mock.calls[0][0]).toBe('foo')
                 expect(response.status).toBe(200)
                 done()
