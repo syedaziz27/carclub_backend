@@ -3,9 +3,9 @@ const SignupRouter = express.Router();
 const SignupService = require('../services/signup');
 
 SignupRouter.post('/', (req, res) => {
-    const {username, email, picture, city, state, zip} = req.body;
+    const {username, email, city, state, zip} = req.body;
   
-    SignupService.create(username, email, picture, city, state, zip)
+    SignupService.create(username, email, city, state, zip)
       .then(data => {
         res.status(200);
         res.json({success: `Created User named ${username} with generated ID: ${data.id}`});

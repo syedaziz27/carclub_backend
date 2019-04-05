@@ -1,13 +1,13 @@
 const {db} = require('./dbConnect')
 const SignupService = {};
 
-SignupService.create = (username, email, picture, city, state, zip) => {
+SignupService.create = (username, email, city, state, zip) => {
     const sql = `
-  INSERT INTO users (username, email, picture, city, state, zip) 
-  VALUES ($[username], $[email], $[picture], $[city], $[state], $[zip]) 
+  INSERT INTO users (username, email, city, state, zip) 
+  VALUES ($[username], $[email], $[city], $[state], $[zip]) 
   RETURNING id;
   `;
-  return db.one(sql, {username, email, picture, city, state, zip});
+  return db.one(sql, {username, email, city, state, zip});
 }
 
 module.exports = SignupService;
