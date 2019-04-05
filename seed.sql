@@ -13,7 +13,8 @@ CREATE TABLE users (
     city VARCHAR NOT NULL,
     state VARCHAR NOT NULL,
     zip INT NOT NULL,
-    bio VARCHAR
+    bio VARCHAR,
+    uid VARCHAR
 );
 
 CREATE TABLE cars (
@@ -51,5 +52,3 @@ CREATE TABLE replies (
     commentID INT REFERENCES comments(id) NOT NULL
     );
 
-INSERT INTO users (username, email, picture, city, state, zip)
-VALUES ('syed', 'email', 'url', 'brooklyn', 'NY', 11218) 
