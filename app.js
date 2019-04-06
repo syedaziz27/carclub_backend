@@ -4,14 +4,14 @@ const app = express();
 const cors = require('cors');
 
 const UserRouter = require('./routes/user');
-const SearchRouter = require('./routes/search');
+const CarRouter = require('./routes/car');
 
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.use('/user', UserRouter);
-app.use('/car', SearchRouter);
+app.use('/car', CarRouter);
 
 
 module.exports = {app,}  

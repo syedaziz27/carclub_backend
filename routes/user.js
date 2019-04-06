@@ -26,18 +26,19 @@ UserRouter.post('/signup', (req, res) => {
       })
 });
 
-// UserRouter.put('/', (req, res) => {
+UserRouter.put('/photo', (req, res) => {
   
-//     const {username, email, bio, picture, zip} = req.body;
+    const {email, picture} = req.body;
   
-//     UserService.update(username, email, bio, picture, zip)
-//       .then(data => {
-//         res.status(200).json({success: `Updated user named ${username}`});
-//       })
-//       .catch(err => {
-//         res.status(400).json({err:err});
-//       })
-// });
+    UserService.updatePhoto(email, picture)
+      .then(data => {
+        res.status(200).json({success: `Updated user photo`});
+      })
+      .catch(err => {
+        res.status(400).json({err:err});
+      })
+});
+
 
 // UserRouter.delete('/', (req, res) => {
 //     const {username} = req.body;

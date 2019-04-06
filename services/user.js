@@ -19,19 +19,14 @@ UserService.getUserData = (email) => {
     return db.one(sql, {email});
 }
   
-// UserService.update = (username, email, bio, picture, zip) => {
-//     const sql = `
-//     UPDATE users
-//     SET 
-//         username = $[username],
-//         email = $[email],
-//         bio = $[bio],
-//         picture = $[picture],
-//         zip = $[zip]
-//     WHERE username = $[username]
-//     `;
-//     return db.none(sql, {username, email, bio, picture, zip});
-// }
+UserService.updatePhoto = (email, picture) => {
+    const sql = `
+    UPDATE users
+    SET picture = $[picture]
+    WHERE email = $[email]
+    `;
+    return db.none(sql, {email, picture});
+}
  
 // UserService.delete = (username) => {
 //     const sql = `

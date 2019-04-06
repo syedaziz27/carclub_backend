@@ -24,7 +24,8 @@ CREATE TABLE cars (
     make VARCHAR NOT NULL,
     model VARCHAR NOT NULL,
     color VARCHAR,
-    ownerID INT REFERENCES users(id) NOT NULL
+    owneremail VARCHAR NOT NULL,
+    frontimg VARCHAR NOT NULL
 );
 
 CREATE TABLE favorites (
