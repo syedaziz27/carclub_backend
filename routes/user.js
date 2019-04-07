@@ -15,9 +15,9 @@ UserRouter.get('/:email', (req, res) => {
 });
 
 UserRouter.post('/signup', (req, res) => {
-    const {username, email, city, state, zip, uid} = req.body;
+    const {username, email, city, state, zip} = req.body;
   
-    UserService.createUser(username, email, city, state, zip, uid)
+    UserService.createUser(username, email, city, state, zip)
       .then(data => {
         res.status(200).json({success: `Created User named ${username} with generated ID: ${data.id}`});
       })
@@ -39,20 +39,28 @@ UserRouter.put('/photo', (req, res) => {
       })
 });
 
-
-// UserRouter.delete('/', (req, res) => {
-//     const {username} = req.body;
+UserRouter.put('/addUID', (req, res) => {
   
-//     UserService.delete(username)
-//       .then(data => {
-//         res.status(200);
-//         res.json({success: `Deleted User named ${username}`});
-//       })
-//       .catch(err => {
-//         res.status(400);
-//         res.json({err:err});
-//       })
-// });
+  const {username, uid} = req.body;
+
+  UserService.updateUID(username, uid)
+    .then(data => {
+      res.status(200).json({success: `Updated user UID`});
+    })
+    .catch(err => {
+      res.status(400).json({err:err});
+    })
+});
+
+
+
+UserRouter.get('/favorites/:email', (req, res) => {
+  const {email} = req.params;
+
+  UserService.getFavs(email)
+    .then(data => res.status(200).json({data}))
+    .catch(err => res.status(400).json({err}))
+})
 
 module.exports = UserRouter;
 

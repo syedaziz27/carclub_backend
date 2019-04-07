@@ -24,13 +24,26 @@ CREATE TABLE cars (
     make VARCHAR NOT NULL,
     model VARCHAR NOT NULL,
     color VARCHAR,
+    year INT NOT NULL,
+    price INT NOT NULL,
     owneremail VARCHAR NOT NULL,
-    frontimg VARCHAR NOT NULL
+    frontimg VARCHAR NOT NULL,
+    mileage INT NOT NULL
 );
 
 CREATE TABLE favorites (
-    userID INT REFERENCES users(id) NOT NULL,
-    carID INT REFERENCES cars(id) NOT NULL
+    id SERIAL PRIMARY KEY,
+    carid INT NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    make VARCHAR NOT NULL,
+    model VARCHAR NOT NULL,
+    color VARCHAR NOT NULL,
+    year INT NOT NULL,
+    price INT NOT NULL,
+    useremail VARCHAR NOT NULL,
+    mileage INT NOT NULL,
+    frontimg VARCHAR NOT NULL
 );
 
 CREATE TABLE transactions (
@@ -51,5 +64,5 @@ CREATE TABLE replies (
     id SERIAL PRIMARY KEY,
     posterID INT REFERENCES users(id) NOT NULL,
     commentID INT REFERENCES comments(id) NOT NULL
-    );
+);
 
