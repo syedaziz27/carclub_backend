@@ -52,15 +52,33 @@ CarRouter.get('/:carid', (req, res) => {
 })
 
 CarRouter.post('/addfav', (req, res) => {
-    const {carid, make, model, color, year, price, useremail, mileage, frontimg} = req.body;
+    const {carid, make, model, color, year, price, userEmail, mileage, frontimg} = req.body;
 
-    CarService.addToFavs(carid, make, model, color, year, price, useremail, mileage, frontimg)
+    CarService.addToFavs(carid, make, model, color, year, price, userEmail, mileage, frontimg)
         .then(data => {
             res.status(200).json({data});
         })
         .catch(err => {
             res.status(200).json({err})
         })
+})
+
+CarRouter.put('/newowner', (req, res) => {
+    const {userEmail, carid} = req.body;
+
+    CarService.updateOwner(userEmail, carid)
+        .then(data => {
+            res.status(200).json({data});
+        })
+        .catch(err => res.status(400).json({err}));
+});
+
+CarRouter.post('/transaction', (req, res) => {
+    const {sellerEmail, buyerEmail, make, model, color, year, mileage,price,frontimg, carid} = req.body;
+
+    CarService.postTransaction(sellerEmail, buyerEmail, make, model, color, year, mileage,price,frontimg, carid)
+        .then(data => res.status(200).json({data}))
+        .catch(err => res.status(400).json({err}))
 })
 
 module.exports = CarRouter;

@@ -28,7 +28,8 @@ CREATE TABLE cars (
     price INT NOT NULL,
     owneremail VARCHAR NOT NULL,
     frontimg VARCHAR NOT NULL,
-    mileage INT NOT NULL
+    mileage INT NOT NULL,
+    purchased BOOLEAN NOT NULL
 );
 
 CREATE TABLE favorites (
@@ -48,8 +49,16 @@ CREATE TABLE favorites (
 
 CREATE TABLE transactions (
     id SERIAL PRIMARY KEY,
-    buyerID INT REFERENCES users(id) NOT NULL,
-    sellerID INT REFERENCES users(id) NOT NULL,
+    sellerEmail VARCHAR NOT NULL,
+    buyerEmail VARCHAR NOT NULL,
+    make VARCHAR NOT NULL,
+    model VARCHAR NOT NULL,
+    color VARCHAR NOT NULL,
+    year VARCHAR NOT NULL,
+    mileage VARCHAR NOT NULL,
+    price VARCHAR NOT NULL,
+    frontimg VARCHAR NOT NULL,
+    carid VARCHAR NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
