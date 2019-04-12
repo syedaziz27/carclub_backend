@@ -15,7 +15,7 @@ describe('Tests for /users route', () => {
         request(app)
             .get('/user/foo')
             .then(response => {
-                console.log(UserService.read.mock.calls)
+                console.log(UserService.getUserData.mock.calls)
                 expect(UserService.read.mock.calls[0][0]).toBe('foo')
                 expect(response.status).toBe(200)
                 done()
@@ -30,7 +30,7 @@ describe('Tests for /users route', () => {
         request(app)
             .get('/user/lolshouldfail')
             .then(response => {
-                expect(UserService.read.mock.calls[0][0]).toBe('lolshouldfail')
+                expect(UserService.getUserData.mock.calls[0][0]).toBe('lolshouldfail')
                 expect(response.status).toBe(400)
                 done()
             })
