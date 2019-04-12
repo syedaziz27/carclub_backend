@@ -9,7 +9,7 @@ describe('Tests for /users route', () => {
     });
 
     it('Should return 200 when GET /username', done => {
-        UserService.read.mockImplementation(() => {
+        UserService.getUserData.mockImplementation(() => {
             return Promise.resolve();
         })
         request(app)
@@ -23,7 +23,7 @@ describe('Tests for /users route', () => {
     })
 
     it('should return 400 when GET /username incorrectly', done => {
-        UserService.read.mockImplementation(() => {
+        UserService.getUserData.mockImplementation(() => {
             return Promise.reject();
         })
         console.log('here')
