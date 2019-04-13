@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS carclub1;
-CREATE DATABASE carclub1;
+-- DROP DATABASE IF EXISTS carclub1;
+-- CREATE DATABASE carclub1;
 
-\c carclub1;
+-- \c carclub1;
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
